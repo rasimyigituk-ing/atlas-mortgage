@@ -3,60 +3,78 @@ export default function Home() {
     <main className="min-h-screen bg-[#06182d] text-white">
       <header className="flex items-center justify-between px-8 py-6 border-b border-white/10">
         <div>
-          <h1 className="text-4xl font-bold tracking-[0.2em] text-[#d6a63a]">
+          <h1 className="text-5xl font-black tracking-[0.22em] text-[#d6a63a]">
             ATLAS
           </h1>
-          <p className="text-sm tracking-[0.3em] uppercase text-white/70">
+          <p className="text-xs tracking-[0.35em] uppercase text-white/70">
             Mortgage Solutions
           </p>
         </div>
 
-        <button className="bg-[#d6a63a] text-[#06182d] px-6 py-3 rounded-xl font-bold">
-          Free Consultation
-        </button>
+        <div className="hidden md:flex gap-4 items-center">
+          <a className="border border-[#d6a63a]/50 px-5 py-3 rounded-xl">
+            020 3488 0780
+          </a>
+          <button className="bg-[#d6a63a] text-[#06182d] px-6 py-3 rounded-xl font-bold">
+            Get a Free Consultation
+          </button>
+        </div>
       </header>
 
       <section className="max-w-7xl mx-auto px-8 py-20 grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p className="text-[#d6a63a] uppercase tracking-[0.2em] mb-4">
-            Whole of Market Advice
+          <p className="text-[#d6a63a] uppercase tracking-[0.2em] mb-5 font-bold">
+            FCA Regulated • Whole of Market Advice
           </p>
 
-          <h2 className="text-6xl font-black leading-tight mb-6">
+          <h2 className="text-6xl md:text-8xl font-black leading-[0.9] mb-6">
             NO MORTGAGE,
             <br />
             <span className="text-[#d6a63a]">NO FEE.</span>
           </h2>
 
-          <div className="bg-red-700 inline-block px-5 py-3 rounded-lg font-bold mb-6">
+          <div className="bg-red-700 inline-block px-6 py-4 rounded-lg font-black text-xl mb-6 uppercase">
             You pay nothing unless we secure your mortgage
           </div>
 
           <p className="text-xl text-white/80 mb-8 max-w-xl">
-            We search thousands of mortgage deals from over 90 lenders to
-            help find the right solution for your needs.
+            We search thousands of mortgage deals from over 90 lenders to help
+            find the right solution for your needs.
           </p>
 
-          <div className="flex flex-wrap gap-4">
-            <button className="bg-[#d6a63a] text-[#06182d] px-8 py-4 rounded-xl font-bold">
-              Book Consultation
-            </button>
+          <div className="grid sm:grid-cols-3 gap-5 mb-10">
+            <div>
+              <h3 className="font-bold text-[#d6a63a]">No Mortgage, No Fee</h3>
+              <p className="text-sm text-white/70">You pay nothing unless we win.</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-[#d6a63a]">Expert Advice</h3>
+              <p className="text-sm text-white/70">We work for you, not lenders.</p>
+            </div>
+            <div>
+              <h3 className="font-bold text-[#d6a63a]">90+ Lenders</h3>
+              <p className="text-sm text-white/70">Access to a wide lender panel.</p>
+            </div>
+          </div>
 
+          <div className="flex flex-wrap gap-4">
+            <button className="bg-[#d6a63a] text-[#06182d] px-8 py-4 rounded-xl font-black">
+              Book Your Free Consultation
+            </button>
             <button className="border border-[#d6a63a] px-8 py-4 rounded-xl font-bold">
-              View Services
+              View Mortgage Services
             </button>
           </div>
         </div>
 
         <div className="relative">
-          <div className="h-[500px] rounded-[30px] bg-gradient-to-br from-slate-700 to-black flex items-center justify-center">
-            <div className="w-[320px] h-[320px] rounded-full border-4 border-[#d6a63a] flex flex-col items-center justify-center text-center p-8 bg-[#06182d] shadow-[0_0_40px_rgba(214,166,58,.4)]">
+          <div className="h-[540px] rounded-[35px] bg-gradient-to-br from-slate-700 via-slate-900 to-black flex items-center justify-center shadow-2xl border border-[#d6a63a]/20">
+            <div className="w-[340px] h-[340px] rounded-full border-4 border-[#d6a63a] flex flex-col items-center justify-center text-center p-8 bg-[#06182d] shadow-[0_0_60px_rgba(214,166,58,.45)]">
               <h3 className="text-4xl font-black leading-tight">
                 BAD CREDIT
                 <br />
                 MORTGAGES
               </h3>
-
               <p className="text-[#d6a63a] text-3xl font-black mt-6">
                 NO MORTGAGE,
                 <br />
@@ -67,40 +85,71 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white text-[#06182d] py-16">
-        <div className="max-w-7xl mx-auto px-8">
-          <h2 className="text-4xl font-black mb-10">
-            We Can Help If You Have...
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-2xl shadow-lg border">
-              <h3 className="font-bold text-2xl mb-3">Bad Credit</h3>
-              <p>
-                CCJs, defaults, missed payments or impaired credit history.
+      <section className="bg-white text-[#06182d] py-8">
+        <div className="max-w-7xl mx-auto px-8 grid md:grid-cols-5 gap-5">
+          {["First Time Buyer", "Home Mover", "Remortgage", "Buy to Let", "Protection"].map((item) => (
+            <div key={item} className="p-5 rounded-2xl border shadow-sm">
+              <h3 className="font-black">{item}</h3>
+              <p className="text-sm text-slate-600 mt-2">
+                Tailored mortgage support for your situation.
               </p>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div className="p-6 rounded-2xl shadow-lg border">
-              <h3 className="font-bold text-2xl mb-3">
-                Self Employed
-              </h3>
-              <p>
-                Sole trader, LTD company or contractor mortgages.
-              </p>
+      <section className="bg-slate-50 text-[#06182d] py-16">
+        <div className="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-8">
+          <div className="bg-white rounded-3xl p-8 shadow-xl">
+            <h2 className="text-4xl font-black mb-8">
+              We Can Help If You Have...
+            </h2>
+
+            <div className="grid sm:grid-cols-2 gap-6">
+              {[
+                ["Bad Credit", "CCJs, defaults, missed payments or arrears."],
+                ["Self Employed", "Sole trader, limited company or contractor."],
+                ["Impaired Credit", "Experian, Equifax or Callcredit issues."],
+                ["Low Deposit", "High LTV deals and flexible deposit options."],
+                ["Complex Income", "Overtime, bonuses, commission or multiple incomes."],
+                ["Refused Before?", "Specialist lenders may still consider your case."],
+              ].map(([title, text]) => (
+                <div key={title} className="border-l-4 border-red-700 pl-4">
+                  <h3 className="font-black text-lg">{title}</h3>
+                  <p className="text-slate-600 text-sm">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-[#06182d] text-white rounded-3xl p-8 shadow-xl">
+            <h2 className="text-4xl font-black mb-4">
+              Let’s Find the Right Mortgage for You
+            </h2>
+            <p className="text-white/70 mb-8">
+              Book your free, no-obligation consultation today.
+            </p>
+
+            <div className="space-y-4 text-lg mb-8">
+              <p>📞 020 3488 0780</p>
+              <p>✉️ info@atlasmortgagesolutions.co.uk</p>
+              <p>📍 London, United Kingdom</p>
             </div>
 
-            <div className="p-6 rounded-2xl shadow-lg border">
-              <h3 className="font-bold text-2xl mb-3">
-                Low Deposit
-              </h3>
-              <p>
-                Flexible options for clients with smaller deposits.
-              </p>
-            </div>
+            <button className="bg-[#d6a63a] text-[#06182d] px-8 py-4 rounded-xl font-black">
+              Get in Touch
+            </button>
           </div>
         </div>
       </section>
+
+      <footer className="bg-[#04111f] px-8 py-8 text-xs text-white/60">
+        <div className="max-w-7xl mx-auto">
+          Your home may be repossessed if you do not keep up repayments on your
+          mortgage. Replace FCA details with your exact authorised firm details
+          before going live.
+        </div>
+      </footer>
     </main>
   );
 }
