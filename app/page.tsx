@@ -16,32 +16,36 @@ const [loading, setLoading] = useState(false);
 const [success, setSuccess] = useState(false);
 const handleSubmit = async (e: any) => {
   e.preventDefault();
-try {
-  setLoading(true);
-const res = await fetch("/api/contact", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(form),
-});
 
-await res.json();
+  try {
+    setLoading(true);
 
-setSuccess(true);
-setLoading(false);
-setForm({
-  name: "",
-  email: "",
-  phone: "",
-  message: "",
-});
-catch (error) {
-  console.error("Error submitting form:", error);
-  alert("Sorry, something went wrong. Please try again.");
-  setLoading(false);
-}
-}
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    });
+
+    await res.json();
+
+    setSuccess(true);
+    setLoading(false);
+
+    setForm({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
+
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Sorry, something went wrong. Please try again.");
+    setLoading(false);
+  }
+};
   return (
     <main className="min-h-screen bg-[#06182d] text-white">
       <header className="flex items-center justify-between px-8 py-6 border-b border-white/10">
@@ -193,7 +197,6 @@ catch (error) {
   {loading ? "Sending..." : "Request Free Consultation"}
 </button>
           </div>
-        </div>
       </section>
 
       <footer className="bg-[#04111f] px-8 py-8 text-xs text-white/60">
@@ -258,4 +261,3 @@ onChange={(e) => setForm({ ...form, message: e.target.value })}
 </main>
   );
 }
-
