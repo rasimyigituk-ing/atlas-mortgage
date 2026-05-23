@@ -1,4 +1,46 @@
+"use client";
+
+import { useState } from "react";
+import { Contact } from "lucide-react";
+
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+const [form, setForm] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+});
+const [loading, setLoading] = useState(false);
+const handleSubmit = async (e: any) => {
+  e.preventDefault();
+try {
+  setLoading(true);
+const res = await fetch("/api/contact", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(form),
+});
+
+await res.json();
+
+alert("Thank you! We will contact you shortly.");
+setLoading(false);
+setForm({
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+});
+} catch (error) {
+  console.error("Error submitting form:", error);
+  alert("Sorry, something went wrong. Please try again.");
+  setLoading(false);
+}
+}
   return (
     <main className="min-h-screen bg-[#06182d] text-white">
       <header className="flex items-center justify-between px-8 py-6 border-b border-white/10">
@@ -150,6 +192,59 @@ export default function Home() {
           before going live.
         </div>
       </footer>
-    </main>
+      <section className="bg-[#0b1220] px-8 py-24">
+  <div className="max-w-4xl mx-auto">
+    <h2 className="text-5xl font-black text-white mb-6">
+      Speak With a Mortgage Specialist
+    </h2>
+
+    <p className="text-white/70 mb-10 text-lg">
+      Get expert mortgage advice tailored to your situation.
+    </p>
+
+    <form onSubmit={handleSubmit} className="grid gap-6">
+      <input
+        type="text"
+        placeholder="Full Name"
+        value={form.name}
+onChange={(e) => setForm({ ...form, name: e.target.value })}
+        className="bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white outline-none"
+      />
+
+      <input
+        type="email"
+        placeholder="Email Address"
+        value={form.email}
+onChange={(e) => setForm({ ...form, email: e.target.value })}
+        className="bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white outline-none"
+      />
+
+      <input
+        type="tel"
+        placeholder="Phone Number"
+        value={form.phone}
+onChange={(e) => setForm({ ...form, phone: e.target.value })}
+        className="bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white outline-none"
+      />
+
+      <textarea
+        placeholder="Tell us about your mortgage needs..."
+        rows={5}
+        value={form.message}
+onChange={(e) => setForm({ ...form, message: e.target.value })}
+        className="bg-white/10 border border-white/10 rounded-2xl px-6 py-5 text-white outline-none"
+      />
+
+      <button
+        type="submit"
+        className="bg-[#fda63a] text-[#06182d] py-5 rounded-2xl font-black text-lg hover:scale-105 transition"
+      >
+        Request Free Consultation
+      </button>
+    </form>
+  </div>
+</section>
+</main>
   );
 }
+
