@@ -13,6 +13,7 @@ const [form, setForm] = useState({
   message: "",
 });
 const [loading, setLoading] = useState(false);
+const [success, setSuccess] = useState(false);
 const handleSubmit = async (e: any) => {
   e.preventDefault();
 try {
@@ -27,7 +28,7 @@ const res = await fetch("/api/contact", {
 
 await res.json();
 
-alert("Thank you! We will contact you shortly.");
+setSuccess(true);
 setLoading(false);
 setForm({
   name: "",
@@ -35,7 +36,7 @@ setForm({
   phone: "",
   message: "",
 });
-} catch (error) {
+catch (error) {
   console.error("Error submitting form:", error);
   alert("Sorry, something went wrong. Please try again.");
   setLoading(false);
@@ -177,8 +178,14 @@ setForm({
               <p>✉️ info@atlasmortgagesolutions.co.uk</p>
               <p>📍 London, United Kingdom</p>
             </div>
+</div>
 
-            <button
+{success && (
+  <div className="bg-green-500/20 border border-green-400 text-green-200 px-4 py-3 rounded-xl mb-4">
+    Thank you! Your request has been sent successfully.
+  </div>
+)}
+<button
   type="submit"
   disabled={loading}
   className="bg-[#d6a63a] text-[#06182d] px-8 py-4 rounded-xl font-black w-full disabled:opacity-50"
