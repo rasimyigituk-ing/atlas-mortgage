@@ -178,9 +178,13 @@ setForm({
               <p>📍 London, United Kingdom</p>
             </div>
 
-            <button className="bg-[#d6a63a] text-[#06182d] px-8 py-4 rounded-xl font-black">
-              Get in Touch
-            </button>
+            <button
+  type="submit"
+  disabled={loading}
+  className="bg-[#d6a63a] text-[#06182d] px-8 py-4 rounded-xl font-black w-full disabled:opacity-50"
+>
+  {loading ? "Sending..." : "Request Free Consultation"}
+</button>
           </div>
         </div>
       </section>
